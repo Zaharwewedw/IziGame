@@ -1,0 +1,9 @@
+package Store.category.repository;
+
+import Store.category.model.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GameRepository extends JpaRepository<Game, Long> {
+}
