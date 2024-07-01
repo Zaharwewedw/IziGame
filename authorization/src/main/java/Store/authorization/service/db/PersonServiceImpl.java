@@ -1,6 +1,7 @@
 package Store.authorization.service.db;
 
 import Store.authorization.dto.dtoController.PersonDTO;
+import Store.authorization.handler.person_error.UpdateException;
 import Store.authorization.model.Person;
 import Store.authorization.repository.PersonRepository;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,8 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public void savePersonInDB(PersonDTO person) {
-        personRepository.save(new Person(person));
+        Person personSave = new Person(person);
+        personRepository.save(personSave);
     }
 
     @Override
@@ -42,6 +44,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public void updatePersonFromDB(PersonDTO person) {
-        personRepository.save(new Person(person));
+
+        if (personRepository.getPersonByNickname(person.nickname()).isPresent())
+            personRepository.save(new Person(person));
+
+        throw new UpdateException("Такого пользываетля не существует");
     }
 }

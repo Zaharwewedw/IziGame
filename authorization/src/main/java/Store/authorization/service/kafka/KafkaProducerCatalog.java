@@ -1,6 +1,7 @@
 package Store.authorization.service.kafka;
 
 
+import Store.authorization.dto.dtoKafka.PersonPayGame;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class KafkaProducerCatalog {
 
     public void sendSaveEmailCatalog(String email) {
         kafkaTemplate.send("personEmail", email);
+    }
+
+    public void sendPayGamePerson(String email) {
+        kafkaTemplate.send("personPayGame", email);
     }
 
 }

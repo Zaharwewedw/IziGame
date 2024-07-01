@@ -1,7 +1,7 @@
-package Store.category.config.kafka.kafkaConfiguration;
+package Store.category.config.kafka;
 
-import Store.category.handler.kafka_error.NonRetryableException;
-import Store.category.handler.kafka_error.RetryableException;
+import Store.category.handler.kafka.NonRetryableException;
+import Store.category.handler.kafka.RetryableException;
 import lombok.AllArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -26,7 +26,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class KafkaGlobalConfig {
 
-   /* private final Environment environment;
+    private final Environment environment;
 
     @Bean
     public ConsumerFactory<String, Object> consumerFactory() {
@@ -66,13 +66,12 @@ public class KafkaGlobalConfig {
     }
 
     @Bean
-    KafkaTemplate<String, Object> kafkaTemplate(ProducerFactory<String, Object> producerFactory) {
+    public KafkaTemplate<String, Object> kafkaTemplate(ProducerFactory<String, Object> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 
-
     @Bean
-    ProducerFactory<String, Object> producerFactory() {
+    public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, environment
@@ -81,5 +80,5 @@ public class KafkaGlobalConfig {
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
         return new DefaultKafkaProducerFactory<>(config);
-    }*/
+    }
 }

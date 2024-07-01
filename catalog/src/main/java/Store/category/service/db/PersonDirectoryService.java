@@ -1,6 +1,7 @@
 package Store.category.service.db;
 
-import Store.category.dto.PersonDirectoryDTO;
+import Store.category.dto.controller_dto.PersonDirectoryDTO;
+import Store.category.dto.kafka_dto.PersonPayGame;
 import Store.category.model.Game;
 import Store.category.model.PersonDirectory;
 
@@ -17,4 +18,6 @@ public interface PersonDirectoryService {
     void deletePersonDirectoryFromDB(Long id);
 
     void updatePersonDirectoryFromDB(PersonDirectoryDTO person);
+
+    public void savePayGameByEmail(PersonPayGame personPayGame);
 }

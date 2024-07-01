@@ -1,6 +1,7 @@
 package Store.category.service.db;
 
-import Store.category.dto.PersonDirectoryDTO;
+import Store.category.dto.controller_dto.PersonDirectoryDTO;
+import Store.category.dto.kafka_dto.PersonPayGame;
 import Store.category.model.Game;
 import Store.category.model.PersonDirectory;
 import Store.category.repository.PersonDirectoryRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -37,6 +39,13 @@ public class PersonDirectoryServiceImpl implements PersonDirectoryService {
     @Override
     @Transactional
     public void deletePersonDirectoryFromDB(Long id) {
+
+    }
+
+    @Override
+    @Transactional
+    public void savePayGameByEmail(PersonPayGame personPayGame) {
+
 
     }
 

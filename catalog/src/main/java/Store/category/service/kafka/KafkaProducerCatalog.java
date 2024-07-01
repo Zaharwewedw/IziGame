@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class KafkaProducerCatalog {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendCatalog(String email) {
+    public void sendCatalog(Object email) {
         kafkaTemplate.send("person", email);
+    }
+
+    public void messagePayPerson(Object message) {
+        kafkaTemplate.send("PayPerson", message);
     }
 
 }

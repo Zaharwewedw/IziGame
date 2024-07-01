@@ -11,6 +11,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -27,14 +30,15 @@ public class Person  {
 
     private String firstName;
 
-    @Email
-    @UniqueElements
     private String email;
 
     private String password;
 
-    @UniqueElements
     private String nickname;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles", schema = "per")
+    private Set<Role> roleSet = new HashSet<>();
 
     public Person (PersonDTO personDTO) {
         this.name = personDTO.name();

@@ -1,5 +1,6 @@
 package Store.authorization.model;
 
+import Store.authorization.dto.dtoController.RoleDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,10 @@ public class Role implements GrantedAuthority {
 
     @Column
     private String roleUser;
+
+    public Role(RoleDTO roleDTO) {
+        this.roleUser = roleDTO.roleUser();
+    }
 
     @Override
     public String getAuthority() {

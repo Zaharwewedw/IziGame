@@ -1,8 +1,7 @@
 package Store.category.model;
 
 
-import Store.category.dto.GameDTO;
-import Store.category.dto.PersonDirectoryDTO;
+import Store.category.dto.controller_dto.PersonDirectoryDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +24,7 @@ public class PersonDirectory {
 
     private String email;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "personDirectories")
     private List<Game> game;
 
     public PersonDirectory(PersonDirectoryDTO personDirectoryDTO) {

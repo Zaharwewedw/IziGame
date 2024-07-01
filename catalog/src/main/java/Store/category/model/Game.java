@@ -1,7 +1,7 @@
 package Store.category.model;
 
 
-import Store.category.dto.GameDTO;
+import Store.category.dto.controller_dto.GameDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,8 +29,14 @@ public class Game {
 
     private Integer price;
 
-    @ManyToOne
-    private PersonDirectory game;
+    @ManyToMany
+    @JoinTable(
+            schema = "gem",
+            name = "catalag",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_directory_id")
+    )
+    private List<PersonDirectory> personDirectories;
 
     public Game(GameDTO gameDTO) {
         this.name = gameDTO.name();

@@ -1,7 +1,7 @@
 package Store.category.controller;
 
 
-import Store.category.dto.GameDTO;
+import Store.category.dto.controller_dto.GameDTO;
 import Store.category.model.Game;
 import Store.category.service.db.ServiceGame;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class RestControllerGame {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveGameInBD(GameDTO personDTO) {
+    public ResponseEntity<?> saveGameInBD(@RequestBody GameDTO personDTO) {
 
         serviceGame.saveGameInDB(personDTO);
         return ResponseEntity.ok("игра успешна добавлен");

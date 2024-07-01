@@ -1,0 +1,14 @@
+.up {
+    margin-top: 17px;
+    margin-bottom: 15px;
+}
+header {
+    background-image: linear-gradient(to right, #dc4e4e, #9f175b);
+}
+.nam {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 36px;
+    color: #144ada;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

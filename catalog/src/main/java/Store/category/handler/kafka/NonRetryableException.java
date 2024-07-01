@@ -1,4 +1,4 @@
-package Store.category.handler.kafka_error;
+package Store.category.handler.kafka;
 
 public class NonRetryableException extends RuntimeException {
 
