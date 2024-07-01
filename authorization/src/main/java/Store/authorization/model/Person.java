@@ -44,7 +44,6 @@ public class Person  {
         this.name = personDTO.name();
         this.firstName = personDTO.firstName();
         this.email = personDTO.email();
-        this.password = personDTO.password();
         this.nickname = personDTO.nickname();
     }
 }
