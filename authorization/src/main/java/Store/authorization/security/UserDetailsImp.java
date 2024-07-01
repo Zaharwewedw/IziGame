@@ -1,12 +1,13 @@
 package Store.authorization.security;
 
 import Store.authorization.model.Person;
+import Store.authorization.model.Role;
 import Store.authorization.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.*;
 
 
 @AllArgsConstructor
@@ -19,8 +20,9 @@ public class UserDetailsImp implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-      return null;
+        Optional<Person> optionalUser = personRepository.getPersonByNickname(person.getNickname());
+        Set<Role> roles = optionalUser.map(Person::getRoleSet).orElse(new HashSet<>());
+        return new ArrayList<>(roles);
     }
 
     @Override
