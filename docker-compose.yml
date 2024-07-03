@@ -1,11 +1,36 @@
 version: '3.7'
 services:
 
-  IziGame :
+  IziGamePostgres :
     image: postgres
-    hostname: IziGame
+    hostname: IziGamePostgres
     ports:
       - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+
+  auth:
+    build: ./authorization
+    ports:
+      - "8080:8080"
+    depends_on:
+      - IziGamePostgres
+      - catalog
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://IziGamePostgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQL94Dialect
+
+  catalog:
+    build: ./authorization
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://IziGamePostgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQL94Dialect
