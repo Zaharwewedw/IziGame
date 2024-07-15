@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="authorization" />
+        <module name="retailer" />
         <module name="catalog" />
         <module name="bot" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="authorization" options="-parameters" />
       <module name="bot" options="-parameters" />
       <module name="catalog" options="-parameters" />
+      <module name="retailer" options="-parameters" />
     </option>
   </component>
 </project>

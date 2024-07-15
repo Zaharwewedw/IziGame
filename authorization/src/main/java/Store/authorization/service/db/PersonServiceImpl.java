@@ -2,6 +2,7 @@ package Store.authorization.service.db;
 
 import Store.authorization.dto.dtoController.PersonDTO;
 import Store.authorization.dto.dtoController.RoleDTO;
+import Store.authorization.handler.person_error.PersonNotFountDataBase;
 import Store.authorization.handler.person_error.UpdateException;
 import Store.authorization.model.Person;
 import Store.authorization.model.Role;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -57,7 +59,12 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public Person getPersonFromDB(Long id) {
-        return personRepository.getReferenceById(id);
+
+        Optional<Person> person = personRepository.getPersonById(id);
+        if (person.isPresent())
+            return person.get();
+
+        throw new PersonNotFountDataBase("Данного пользывателя нет");
     }
 
     @Override

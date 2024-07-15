@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,7 @@ public class RestControllerPerson {
         personService.savePersonInDB(personDTO);
         kafkaProducerCatalog.sendSaveEmailCatalog(personDTO.email());
 
-        return  ResponseEntity.ok("Пользователь успешно добавлен");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping

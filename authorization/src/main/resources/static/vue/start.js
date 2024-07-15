@@ -23,3 +23,4 @@ fetch('http://localhost:8082/api/game')
         });
     })
     .catch(error => console.error('Ошибка:', error));
+w

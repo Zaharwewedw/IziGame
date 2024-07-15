@@ -1,6 +1,7 @@
 package Store.authorization.handler;
 
 
+import Store.authorization.handler.person_error.PersonNotFountDataBase;
 import Store.authorization.handler.person_error.UpdateException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
@@ -21,5 +22,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     public void catchResourceNotFoundException(JsonProcessingException e) {
         log.error(e.getMessage(), e);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<AppError> catchResourceNotFoundExceptionPerson(PersonNotFountDataBase e) {
+        log.error(e.getMessage(), e);
+        return new ResponseEntity<>(new AppError(e.getMessage(), HttpStatus.NOT_FOUND.value()), HttpStatus.NOT_FOUND);
     }
 }

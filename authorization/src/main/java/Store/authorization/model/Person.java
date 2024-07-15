@@ -4,12 +4,10 @@ package Store.authorization.model;
 import Store.authorization.dto.dtoController.PersonDTO;
 import jakarta.persistence.*;
 
-import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.HashSet;
 import java.util.Set;
